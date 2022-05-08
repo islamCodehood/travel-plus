@@ -7,7 +7,8 @@ type placePageProps = {
 	placeName: string;
 	details: string;
 	imgURL: string;
-	images: [string];
+	images: {urls: {small: string}}[];
+	
 };
 const Place = ({ placeName, details, imgURL, images }: placePageProps) => {
 	return (
@@ -56,7 +57,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	
+
 	const request = await fetch(
 		`https://api.unsplash.com/search/photos?query=${params?.placeName}&orientation=landscape&client_id=7c07e16352a1d717b5dbdf66acc4b334a19bc004be2d278e7ded4b7f3239b0e7`
 	);
