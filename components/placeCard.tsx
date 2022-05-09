@@ -21,7 +21,7 @@ const PlaceCard = ({ placeName, details, imgURL }: placeProps) => {
 				<p className='text-sm'>{`${details.substring(0, 150)}...`}</p>
 				<div>
 					<Link href={`/places/${placeName}`} className='mt-4'>
-						<a className='mt-4 text-sm text-indigo-500'>More details</a>
+						<a className='link-style'>More details</a>
 					</Link>
 				</div>
 			</div>

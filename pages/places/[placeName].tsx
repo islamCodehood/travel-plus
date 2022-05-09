@@ -1,7 +1,7 @@
-import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { places } from '../../data/placesData.js';
 import Image from 'next/image';
+import Link from 'next/link'
 
 type placePageProps = {
 	placeName: string;
@@ -47,6 +47,9 @@ const Place = ({ placeName, details, imgURL, images }: placePageProps) => {
 	);
 };
 
+
+
+
 export const getStaticPaths: GetStaticPaths = async () => {
 	return {
 		paths: places.map(place => {
@@ -55,6 +58,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		fallback: false,
 	};
 };
+
+
+
+
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
@@ -66,10 +73,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	return {
 		props: {
 			placeName: params?.placeName,
-			details: places.filter(place => place.placeName === params?.placeName)[0]
-				.details,
-			imgURL: places.filter(place => place.placeName === params?.placeName)[0]
-				.imgURL,
+			details: places.filter(place => place.placeName === params?.placeName)[0].details,
+			imgURL: places.filter(place => place.placeName === params?.placeName)[0].imgURL,
 			images: data.results,
 		},
 	};
